@@ -20,7 +20,7 @@ const createMovieHtml = (obj) => {
   reserveButton.dataset.id = obj.id;
 
   reserveButton.addEventListener('click', () => {
-    getMovie(obj.id).then((data) => displayReservation(data));
+    getMovie(obj.id).then((data) => displayReservation(data, obj.id));
   });
 
   likeButton.classList.add('lar');
