@@ -3,7 +3,7 @@ const closePopup = () => {
   container.classList.remove('active');
   container.innerHTML = '';
 
-  return container
+  return container;
 };
 
 const displayReservation = (dataObj) => {

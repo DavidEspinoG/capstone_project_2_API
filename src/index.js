@@ -9,4 +9,4 @@ getTrending()
     data.forEach((element) => {
       movieContainer.append(createMovieHtml(element));
     });
-});
+  });
