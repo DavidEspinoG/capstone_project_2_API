@@ -7,7 +7,7 @@ const getLikes = async (id) => {
   if (index > -1) {
     return data[index].likes; 
   } 
-  return false;
+  return 0;
 };
 
 export default getLikes;
