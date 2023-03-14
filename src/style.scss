@@ -63,6 +63,25 @@ img {
 
   .like-button {
     font-size: 30px;
+    transition-property: color, transform;
+    transition-duration: 0.2s, 0.5s;
+    transition-timing-function: linear;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.2);
+    }
+
+    &:active {
+      color: $orange;
+    }
+  }
+
+  .likes-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
   }
 }
 

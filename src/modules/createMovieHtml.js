@@ -10,6 +10,7 @@ const createMovieHtml = (obj) => {
   const commentButton = document.createElement('button');
   const reserveButton = document.createElement('button');
   const likesDiv = document.createElement('div');
+  likesDiv.classList.add('likes-div');
   likes.id = obj.id;
   likes.classList.add('like-counter');
   getLikes(obj.id)
