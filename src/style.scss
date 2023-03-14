@@ -38,6 +38,11 @@ body {
   gap: 18px;
 }
 
+@mixin border-style() {
+  background-color: $gray;
+  border-radius: 20px;
+  padding: 30px;
+}
 img {
   max-width: 100%;
 }
@@ -45,10 +50,8 @@ img {
 .movies-container {
   @include grid(3);
   @include container();
+  @include border-style();
 
-  background-color: $gray;
-  border-radius: 20px;
-  padding: 30px;
   text-align: center;
 
   img {
@@ -95,6 +98,12 @@ img {
   width: 230px;
   color: white;
   padding: 7px;
-  border-radius: 10px;
+  border-radius: 10pxc;
   font-size: 18px;
+}
+
+.counters {
+  @include container();
+  @include border-style();
+  margin-top: 20px;
 }
