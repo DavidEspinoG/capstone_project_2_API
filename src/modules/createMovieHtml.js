@@ -11,6 +11,7 @@ const createMovieHtml = (obj) => {
   likes.innerText = '1';
   commentButton.innerText = 'Comment';
   commentButton.classList.add('button');
+  commentButton.classList.add('comment-button');
   commentButton.dataset.id = obj.id;
   reserveButton.innerText = 'Reserve';
   reserveButton.classList.add('button');
