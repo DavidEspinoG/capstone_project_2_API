@@ -4,7 +4,6 @@ import mainUrl from './mainUrl.js';
 const getTrending = async () => {
   const res = await fetch(`${mainUrl}trending/movie/day?api_key=${apiKey}`);
   const data = await res.json();
-  console.log(data.results)
   return data.results;
 };
 
