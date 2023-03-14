@@ -6,7 +6,7 @@ const createMovieHtml = (obj) => {
   const likes = document.createElement('span');
   const commentButton = document.createElement('button');
   const reserveButton = document.createElement('button');
-  container.classList.add('movie-card')
+  container.classList.add('movie-card');
   title.innerText = obj.title;
   likes.innerText = '1';
   commentButton.innerText = 'Comment';
@@ -16,7 +16,7 @@ const createMovieHtml = (obj) => {
   likeButton.classList.add('lar');
   likeButton.classList.add('la-heart');
   likeButton.classList.add('like-button');
-  img.src = 'https://image.tmdb.org/t/p/w500/' + obj.poster_path;
+  img.src = `https://image.tmdb.org/t/p/w500/${obj.poster_path}`;
   container.append(img, title, likeButton, commentButton, reserveButton);
   return container;
 };

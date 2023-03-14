@@ -10,7 +10,9 @@ html {
   color: white;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -43,18 +45,22 @@ img {
 .movies-container {
   @include grid(3);
   @include container();
+
   background-color: $gray;
   border-radius: 20px;
   padding: 30px;
   text-align: center;
+
   img {
     width: 300px;
     border-radius: 15px;
   }
+
   p {
     font-size: 22px;
     margin: 0;
   }
+
   .like-button {
     font-size: 30px;
   }

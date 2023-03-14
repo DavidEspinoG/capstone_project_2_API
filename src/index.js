@@ -5,8 +5,8 @@ import createMovieHtml from './modules/createMovieHtml.js';
 const movieContainer = document.getElementById('movies-container');
 
 getTrending()
-  .then(data => {
-    data.forEach(element => {
-     movieContainer.append(createMovieHtml(element)) 
+  .then((data) => {
+    data.forEach((element) => {
+      movieContainer.append(createMovieHtml(element));
     });
-  }).catch(error => console.log(error));
+  });
