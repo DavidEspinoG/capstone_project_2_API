@@ -1,7 +1,7 @@
 import './style.scss';
 import getTrending from './modules/getTrending.js';
 import createMovieHtml from './modules/createMovieHtml.js';
-import movieCounter from './modules/movieCounter';
+import movieCounter from './modules/movieCounter.js';
 
 const movieContainer = document.getElementById('movies-container');
 
@@ -10,5 +10,6 @@ getTrending()
     data.forEach((element) => {
       movieContainer.append(createMovieHtml(element));
     });
-    movieCounter()
-  })
+    const movies = document.querySelectorAll('.movie-card');
+    movieCounter(movies);
+  });

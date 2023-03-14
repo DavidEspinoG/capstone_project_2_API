@@ -43,6 +43,7 @@ body {
   border-radius: 20px;
   padding: 30px;
 }
+
 img {
   max-width: 100%;
 }
@@ -98,12 +99,13 @@ img {
   width: 230px;
   color: white;
   padding: 7px;
-  border-radius: 10pxc;
+  border-radius: 10px;
   font-size: 18px;
 }
 
 .counters {
   @include container();
   @include border-style();
+
   margin-top: 20px;
 }
