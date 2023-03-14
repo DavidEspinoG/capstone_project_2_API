@@ -1,5 +1,7 @@
 import getLikes from './getLikes.js';
 import likeMovie from './likeMovie.js';
+import getMovie from './getMovie.js';
+import displayReservation from './displayReservation.js';
 
 const createMovieHtml = (obj) => {
   const container = document.createElement('div');
@@ -23,6 +25,11 @@ const createMovieHtml = (obj) => {
   reserveButton.innerText = 'Reserve';
   reserveButton.classList.add('button');
   reserveButton.dataset.id = obj.id;
+
+  reserveButton.addEventListener('click', () => {
+    getMovie(obj.id).then((data) => displayReservation(data));
+  });
+
   likeButton.classList.add('lar');
   likeButton.classList.add('la-heart');
   likeButton.classList.add('like-button');
