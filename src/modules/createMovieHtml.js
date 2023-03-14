@@ -1,3 +1,4 @@
+
 const createMovieHtml = (obj) => {
   const container = document.createElement('div');
   const img = document.createElement('img');
@@ -6,9 +7,11 @@ const createMovieHtml = (obj) => {
   const likes = document.createElement('span');
   const commentButton = document.createElement('button');
   const reserveButton = document.createElement('button');
+  const likesDiv = document.createElement('div');
+  likes.id = obj.id;
+  likes.classList.add('like-counter');
   container.classList.add('movie-card');
   title.innerText = obj.title;
-  likes.innerText = '1';
   commentButton.innerText = 'Comment';
   commentButton.classList.add('button');
   commentButton.dataset.id = obj.id;
@@ -19,7 +22,8 @@ const createMovieHtml = (obj) => {
   likeButton.classList.add('la-heart');
   likeButton.classList.add('like-button');
   img.src = `https://image.tmdb.org/t/p/w500/${obj.poster_path}`;
-  container.append(img, title, likeButton, commentButton, reserveButton);
+  likesDiv.append(likeButton, likes)
+  container.append(img, title, likesDiv, commentButton, reserveButton);
   return container;
 };
 
