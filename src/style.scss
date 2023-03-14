@@ -5,6 +5,8 @@ $orange: #ff4c29;
 $main-font: 'Nunito', sans-serif;
 
 html {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   font-family: $main-font;
   color: white;
@@ -78,4 +80,71 @@ img {
   padding: 7px;
   border-radius: 10px;
   font-size: 18px;
+}
+
+// ------ Reservation styles --------------
+.reservation-container {
+  margin: 2rem;
+  padding: 2rem 14rem;
+  display: none;
+  flex-direction: column;
+  gap: 3rem;
+  background-color: $gray;
+  border-radius: 1rem;
+
+  .img-container {
+    border-radius: 1rem;
+
+    img {
+      width: 100%;
+      border-radius: 1rem;
+    }
+  }
+
+  i {
+    position: absolute;
+    right: 4rem;
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 3rem;
+  }
+
+  h2,
+  h3 {
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+
+    h3 {
+      align-self: center;
+    }
+
+    input {
+      width: 40%;
+      padding: 0.5rem;
+      color: $dark-green;
+      border: none;
+      border-radius: 0.25rem;
+    }
+
+    button {
+      padding: 0.25rem 1rem;
+      border: none;
+      border-radius: 0.25rem;
+      background-color: $orange;
+      cursor: pointer;
+    }
+  }
+}
+
+.reservation-container.active {
+  display: flex;
 }
