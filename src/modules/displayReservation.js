@@ -28,37 +28,38 @@ const reservationDetails = (data) => {
   closeBtn.addEventListener('click', closePopup);
 
   return container;
-}
+};
 
 const reservationNumbers = (id) => {
   const url = `${involvementUrl}/reservations?item_id=${id}`;
   const container = document.querySelector('.reservation-container');
-  container.insertAdjacentHTML('beforeend', `<section id="reservations-list"></section>`)
+  container.insertAdjacentHTML('beforeend', '<section id="reservations-list"></section>');
 
   const list = document.getElementById('reservations-list');
   list.innerHTML = '<h3>Reservations</h3>';
 
   getReservations(url).then((data) => {
     data.forEach((reservation) => {
-      list.insertAdjacentHTML('beforeend', 
-      `<p>${reservation.date_start} - ${reservation.date_end} by ${reservation.username}</p>`)
+      list.insertAdjacentHTML('beforeend',
+        `<p>${reservation.date_start} - ${reservation.date_end} by ${reservation.username}</p>`);
     });
-  })
+  });
 
   return container;
-}
+};
 
-const reserveMovie = ({id, name, start, end}) => {
-  console.log({id, name, start, end});
+const reserveMovie = ({
+  id, name, start, end,
+}) => {
   const url = `${involvementUrl}/reservations/`;
   const data = {
     item_id: id,
     username: name,
     date_start: start,
-    date_end: end
+    date_end: end,
   };
   postReservation(url, data);
-}
+};
 
 const displayReservation = (movieData, id) => {
   const container = document.querySelector('.reservation-container');
@@ -66,8 +67,8 @@ const displayReservation = (movieData, id) => {
   reservationDetails(movieData);
   reservationNumbers(id);
 
-  container.insertAdjacentHTML('beforeend', 
-  `<form action="/" data-id="${id}">
+  container.insertAdjacentHTML('beforeend',
+    `<form action="/" data-id="${id}">
     <h3>Add a Reservation</h3>
     <input type="text" name="user-name" id="user-name" placeholder="Your name" required>
     <input type="date" name="res-start" id="res-start" placeholder="Start date" required>
@@ -82,7 +83,7 @@ const displayReservation = (movieData, id) => {
       id: form.dataset.id,
       name: document.getElementById('user-name').value,
       start: document.getElementById('res-start').value,
-      end: document.getElementById('res-end').value
+      end: document.getElementById('res-end').value,
     };
     reserveMovie(formData);
 
