@@ -2,6 +2,8 @@ const closePopup = () => {
   const container = document.querySelector('.reservation-container');
   container.classList.remove('active');
   container.innerHTML = '';
+
+  return container
 };
 
 const displayReservation = (dataObj) => {
@@ -29,10 +31,12 @@ const displayReservation = (dataObj) => {
             <input type="date" name="res-end" id="res-end" placeholder="End date">
             <button type="submit">Reserve</button>
         </form>`);
-  
+
   const closeBtn = document.querySelector('.las.la-times');
 
   closeBtn.addEventListener('click', closePopup);
+
+  return container;
 };
 
 export default displayReservation;
