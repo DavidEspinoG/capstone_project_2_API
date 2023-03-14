@@ -1,4 +1,5 @@
-import getLikes from "./getLikes";
+import getLikes from './getLikes.js';
+import likeMovie from './likeMovie.js';
 
 const createMovieHtml = (obj) => {
   const container = document.createElement('div');
@@ -12,7 +13,7 @@ const createMovieHtml = (obj) => {
   likes.id = obj.id;
   likes.classList.add('like-counter');
   getLikes(obj.id)
-    .then(data => likes.innerText = data);
+    .then((data) => { likes.innerText = data; });
   container.classList.add('movie-card');
   title.innerText = obj.title;
   commentButton.innerText = 'Comment';
@@ -25,10 +26,16 @@ const createMovieHtml = (obj) => {
   likeButton.classList.add('la-heart');
   likeButton.classList.add('like-button');
   likeButton.addEventListener('click', () => {
-    console.log('liked element', obj.id)
+    likeMovie(obj.id)
+      .then(() => {
+        getLikes(obj.id)
+          .then((data) => {
+            likes.innerText = data;
+          });
+      });
   });
   img.src = `https://image.tmdb.org/t/p/w500/${obj.poster_path}`;
-  likesDiv.append(likeButton, likes)
+  likesDiv.append(likeButton, likes);
   container.append(img, title, likesDiv, commentButton, reserveButton);
   return container;
 };
