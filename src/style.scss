@@ -4,17 +4,85 @@ $dark-green: #334756;
 $orange: #ff4c29;
 $main-font: 'Nunito', sans-serif;
 
-* {
+html {
   margin: 0;
   padding: 0;
-  font-family: 'Nunito', sans-serif;
+  box-sizing: border-box;
+  font-family: $main-font;
   color: white;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
 body {
   background-color: $bg-main;
 }
 
+@mixin grid($columns) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: 20px;
+}
+
+@mixin container () {
+  margin: 0 auto;
+  max-width: 95%;
+}
+
+@mixin flex-center() {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+img {
+  max-width: 100%;
+}
+
+.movies-container {
+  @include grid(3);
+  @include container();
+
+  background-color: $gray;
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+
+  img {
+    width: 300px;
+    border-radius: 15px;
+  }
+
+  p {
+    font-size: 22px;
+    margin: 0;
+  }
+
+  .like-button {
+    font-size: 30px;
+  }
+}
+
+.movie-card {
+  @include flex-center();
+}
+
+.button {
+  background-color: $orange;
+  border: none;
+  width: 230px;
+  color: white;
+  padding: 7px;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+// ------ Reservation styles --------------
 .reservation-container {
   margin: 2rem;
   padding: 2rem 14rem;
