@@ -13,7 +13,7 @@ const postReservation = async (url, reservationData) => {
         'Content-type': 'application/json; charset=UTF-8',
       },
   });
-  const data = await response.json();
+  const data = response.ok;
 
   return data;
 };
