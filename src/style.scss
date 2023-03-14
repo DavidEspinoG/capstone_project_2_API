@@ -40,6 +40,12 @@ body {
   gap: 18px;
 }
 
+@mixin border-style() {
+  background-color: $gray;
+  border-radius: 20px;
+  padding: 30px;
+}
+
 img {
   max-width: 100%;
 }
@@ -47,10 +53,8 @@ img {
 .movies-container {
   @include grid(3);
   @include container();
+  @include border-style();
 
-  background-color: $gray;
-  border-radius: 20px;
-  padding: 30px;
   text-align: center;
 
   img {
@@ -65,6 +69,25 @@ img {
 
   .like-button {
     font-size: 30px;
+    transition-property: color, transform;
+    transition-duration: 0.2s, 0.5s;
+    transition-timing-function: linear;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.2);
+    }
+
+    &:active {
+      color: $orange;
+    }
+  }
+
+  .likes-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
   }
 }
 
@@ -82,65 +105,71 @@ img {
   font-size: 18px;
 }
 
-// ------ Reservation styles --------------
-.reservation-container {
-  margin: 2rem;
-  padding: 2rem 14rem;
-  display: none;
-  flex-direction: column;
-  gap: 3rem;
-  background-color: $gray;
-  border-radius: 1rem;
+.counters {
+  @include container();
+  @include border-style();
 
-  .img-container {
+  margin-top: 20px;
+  // ------ Reservation styles --------------
+  .reservation-container {
+    margin: 2rem;
+    padding: 2rem 14rem;
+    display: none;
+    flex-direction: column;
+    gap: 3rem;
+    background-color: $gray;
     border-radius: 1rem;
 
-    img {
-      width: 100%;
+    .img-container {
       border-radius: 1rem;
+
+      img {
+        width: 100%;
+        border-radius: 1rem;
+      }
     }
-  }
 
-  i {
-    position: absolute;
-    right: 4rem;
-    font-size: 3rem;
-  }
+    i {
+      position: absolute;
+      right: 4rem;
+      font-size: 3rem;
+    }
 
-  h2 {
-    font-size: 3rem;
-  }
+    h2 {
+      font-size: 3rem;
+    }
 
-  h2,
-  h3 {
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-
+    h2,
     h3 {
-      align-self: center;
+      margin-bottom: 1rem;
+      text-align: center;
     }
 
-    input {
-      width: 40%;
-      padding: 0.5rem;
-      color: $dark-green;
-      border: none;
-      border-radius: 0.25rem;
-    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
 
-    button {
-      padding: 0.25rem 1rem;
-      border: none;
-      border-radius: 0.25rem;
-      background-color: $orange;
-      cursor: pointer;
+      h3 {
+        align-self: center;
+      }
+
+      input {
+        width: 40%;
+        padding: 0.5rem;
+        color: $dark-green;
+        border: none;
+        border-radius: 0.25rem;
+      }
+
+      button {
+        padding: 0.25rem 1rem;
+        border: none;
+        border-radius: 0.25rem;
+        background-color: $orange;
+        cursor: pointer;
+      }
     }
   }
 }
