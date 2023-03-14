@@ -12,5 +12,4 @@ getTrending()
     });
     const movies = document.querySelectorAll('.movie-card');
     movieCounter(movies);
-});
-
+  });
