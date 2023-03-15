@@ -5,7 +5,7 @@ $orange: #ff4c29;
 $main-font: 'Nunito', sans-serif;
 
 .comment-container {
-  height: 100vh;
+  height: 90vh;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -34,6 +34,10 @@ $main-font: 'Nunito', sans-serif;
   right: 0;
 }
 
+.comment-list {
+  list-style-type: none;
+}
+
 .comment-form {
   display: flex;
   flex-direction: column;
@@ -56,4 +60,9 @@ $main-font: 'Nunito', sans-serif;
   color: #fff;
   font-weight: 700;
   font-size: 1.2rem;
+  border: none;
+}
+
+.submit-comment:hover {
+  cursor: pointer;
 }
