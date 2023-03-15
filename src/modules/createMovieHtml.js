@@ -1,3 +1,5 @@
+import commentPopUp from './commentPopUp.js';
+
 const createMovieHtml = (obj) => {
   const container = document.createElement('div');
   const img = document.createElement('img');
@@ -19,6 +21,8 @@ const createMovieHtml = (obj) => {
   likeButton.classList.add('lar');
   likeButton.classList.add('la-heart');
   likeButton.classList.add('like-button');
+
+  commentButton.addEventListener('click', () => commentPopUp(obj.id));
   img.src = `https://image.tmdb.org/t/p/w500/${obj.poster_path}`;
   container.append(img, title, likeButton, commentButton, reserveButton);
   return container;
