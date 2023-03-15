@@ -1,0 +1,27 @@
+.comment-container {
+  height: 100vh;
+  width: 80%;
+  background-color: #082032;
+  position: absolute;
+  top: 0;
+  left: 10%;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 5px;
+  overflow: auto;
+}
+
+.comment-container img {
+  height: 300px;
+}
+
+.comment-container p {
+  width: 80%;
+}
+
+.exit {
+  position:absolute;
+  right: 0;
+}
