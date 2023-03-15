@@ -17,16 +17,26 @@ $main-font: 'Nunito', sans-serif;
   align-items: center;
   row-gap: 5px;
   overflow: auto;
-  background-color: $bg-main;
+  background-color: $gray;
   margin: 1rem;
+  border-radius: 20px;
+  z-index: 5;
 }
 
 .comment-container img {
   height: 300px;
+  border-radius: 20px;
 }
 
 .comment-container p {
-  width: 80%;
+  width: 70%;
+}
+
+.comment-container p,
+.comment-container ul,
+.comment-container form {
+  align-self: flex-start;
+  margin-left: 20%;
 }
 
 .exit-btn {

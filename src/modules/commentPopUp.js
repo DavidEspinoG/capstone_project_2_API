@@ -2,6 +2,7 @@ import apiKey from '../apiKey.js';
 import '../comment.scss';
 
 const commentWrapper = document.querySelector('.comment-container');
+const movieWrapper = document.querySelector('.movies-container');
 const endPoint = 'https://api.themoviedb.org/3/movie/';
 const showImage = 'http://image.tmdb.org/t/p/w500/';
 const appId = 'XXyTDvZv9uOyCyOJ39gw';
@@ -46,6 +47,7 @@ const getComment = async (movieId) => {
 
 const commentPopUp = (movieId) => {
   commentWrapper.style.display = 'flex';
+  movieWrapper.style.filter = 'blur(4px)';
   movieData(movieId).then(
     (value) => {
       commentWrapper.innerHTML = '';
@@ -106,6 +108,7 @@ const commentPopUp = (movieId) => {
 
       exitBtn.addEventListener('click', () => {
         commentWrapper.style.display = 'none';
+        movieWrapper.style.filter = 'blur(0)';
       });
     },
   );
