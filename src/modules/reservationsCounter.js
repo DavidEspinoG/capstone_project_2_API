@@ -1,7 +1,7 @@
 const reservationsCounter = (list) => {
-    let counter = list.length;
+  const counter = list.length;
 
-    return counter;
+  return counter;
 };
 
 export default reservationsCounter;

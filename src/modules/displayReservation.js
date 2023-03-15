@@ -42,7 +42,7 @@ const reservationDetails = (data) => {
 const reservationNumbers = (id) => {
   const url = `${involvementUrl}/reservations?item_id=${id}`;
   const container = document.querySelector('.reservation-container');
-  container.insertAdjacentHTML('beforeend', 
+  container.insertAdjacentHTML('beforeend',
     `<section id="reservations-list-container">
       <ul id="reservations-list"></ul>
     </section>`);
@@ -53,7 +53,7 @@ const reservationNumbers = (id) => {
       list.insertAdjacentHTML('beforeend',
         `<li>${reservation.date_start} - ${reservation.date_end} by ${reservation.username}</li>`);
     });
-    const listArr = document.querySelectorAll('#reservations-list > li')
+    const listArr = document.querySelectorAll('#reservations-list > li');
     list.insertAdjacentHTML('beforebegin', `<h3>Reservations (${reservationsCounter(listArr)})</h3>`);
   }).catch(() => {
     list.insertAdjacentHTML('beforebegin',
