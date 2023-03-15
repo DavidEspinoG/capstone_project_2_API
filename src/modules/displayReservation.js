@@ -1,17 +1,26 @@
 import involvementUrl from './involvementUrl.js';
 import { getReservations, postReservation } from './reservationsData.js';
+import reservationsCounter from './reservationsCounter.js';
 
 const closePopup = () => {
+  const body = document.querySelector('body');
   const container = document.querySelector('.reservation-container');
+  const overlay = document.getElementById('overlay');
   container.classList.remove('active');
+  overlay.classList.remove('active');
+  body.classList.remove('popup');
   container.innerHTML = '';
 
   return container;
 };
 
 const reservationDetails = (data) => {
+  const body = document.querySelector('body');
   const container = document.querySelector('.reservation-container');
+  const overlay = document.getElementById('overlay');
   container.classList.add('active');
+  overlay.classList.add('active');
+  body.classList.add('popup');
 
   container.insertAdjacentHTML('beforeend',
     `<div class="img-container">
@@ -33,16 +42,25 @@ const reservationDetails = (data) => {
 const reservationNumbers = (id) => {
   const url = `${involvementUrl}/reservations?item_id=${id}`;
   const container = document.querySelector('.reservation-container');
-  container.insertAdjacentHTML('beforeend', '<section id="reservations-list"></section>');
+  container.insertAdjacentHTML('beforeend',
+    `<section id="reservations-list-container">
+      <h3>Reservations</h3>
+      <ul id="reservations-list"></ul>
+    </section>`);
 
   const list = document.getElementById('reservations-list');
-  list.innerHTML = '<h3>Reservations</h3>';
-
+  const h3 = document.querySelector('#reservations-list-container > h3');
+  list.innerHTML = '';
   getReservations(url).then((data) => {
     data.forEach((reservation) => {
       list.insertAdjacentHTML('beforeend',
-        `<p>${reservation.date_start} - ${reservation.date_end} by ${reservation.username}</p>`);
+        `<li>${reservation.date_start} - ${reservation.date_end} by ${reservation.username}</li>`);
     });
+    const listArr = document.querySelectorAll('#reservations-list > li');
+    h3.innerHTML = `Reservations (${reservationsCounter(listArr)})`;
+  }).catch(() => {
+    list.insertAdjacentHTML('beforebegin',
+      '<p>There are no reservations yet</p>');
   });
 
   return container;
@@ -58,7 +76,9 @@ const reserveMovie = ({
     date_start: start,
     date_end: end,
   };
-  postReservation(url, data);
+  postReservation(url, data).then(() => {
+    reservationNumbers(id);
+  });
 };
 
 const displayReservation = (movieData, id) => {
