@@ -13,7 +13,7 @@ const movieData = async (movieId) => {
   return data;
 };
 
-const newComment = async (itemId, username, comment) => {
+const newComment = async (itemId, username, comment, callBack) => {
   let response;
   try {
     response = await fetch(`${envolvAPI}/${appId}/comments`, {
@@ -28,10 +28,11 @@ const newComment = async (itemId, username, comment) => {
       },
     });
   } catch (error) {
-    console.log(error);
+    console.log(error, response.status);
   }
 
   if (response.status === 201) {
+    callBack(itemId);
     console.log('Post successful');
   } else {
     console.log('Post failed');
@@ -44,6 +45,7 @@ const getComment = async (movieId) => {
 };
 
 const commentPopUp = (movieId) => {
+  commentWrapper.style.display = 'flex';
   movieData(movieId).then(
     (value) => {
       commentWrapper.innerHTML = '';
@@ -68,7 +70,9 @@ const commentPopUp = (movieId) => {
       commnetForm.className = 'comment-form';
       userName.setAttribute('placeholder', 'Your Name');
       userName.setAttribute('type', 'text');
+      userName.required = true;
       commentText.setAttribute('placeholder', 'Comment');
+      commentText.required = true;
       submitBtn.className = 'submit-comment';
       submitBtn.innerText = 'Comment';
       exitBtn.className = 'exit-btn';
@@ -93,11 +97,9 @@ const commentPopUp = (movieId) => {
       commentWrapper.append(popImg, popTitle, popOverview, commnetListTitle, commentLists,
         commentTitle, commnetForm, exitBtn);
 
-      commentWrapper.style.display = 'flex';
-
       commnetForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        newComment(movieId, userName.value, commentText.value);
+        newComment(movieId, userName.value, commentText.value, commentPopUp);
         userName.value = '';
         commentText.value = '';
       });
