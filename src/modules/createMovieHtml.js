@@ -1,3 +1,4 @@
+import commentPopUp from './commentPopUp.js';
 import getLikes from './getLikes.js';
 import likeMovie from './likeMovie.js';
 import getMovie from './getMovie.js';
@@ -21,6 +22,7 @@ const createMovieHtml = (obj) => {
   title.innerText = obj.title;
   commentButton.innerText = 'Comment';
   commentButton.classList.add('button');
+  commentButton.classList.add('comment-button');
   commentButton.dataset.id = obj.id;
   reserveButton.innerText = 'Reserve';
   reserveButton.classList.add('button');
@@ -33,6 +35,9 @@ const createMovieHtml = (obj) => {
   likeButton.classList.add('lar');
   likeButton.classList.add('la-heart');
   likeButton.classList.add('like-button');
+
+  commentButton.addEventListener('click', () => commentPopUp(obj.id));
+
   likeButton.addEventListener('click', () => {
     likeMovie(obj.id)
       .then(() => {
