@@ -44,21 +44,23 @@ const reservationNumbers = (id) => {
   const container = document.querySelector('.reservation-container');
   container.insertAdjacentHTML('beforeend',
     `<section id="reservations-list-container">
+      <h3>Reservations</h3>
       <ul id="reservations-list"></ul>
     </section>`);
 
   const list = document.getElementById('reservations-list');
+  const h3 = document.querySelector('#reservations-list-container > h3');
+  list.innerHTML = '';
   getReservations(url).then((data) => {
     data.forEach((reservation) => {
       list.insertAdjacentHTML('beforeend',
         `<li>${reservation.date_start} - ${reservation.date_end} by ${reservation.username}</li>`);
     });
     const listArr = document.querySelectorAll('#reservations-list > li');
-    list.insertAdjacentHTML('beforebegin', `<h3>Reservations (${reservationsCounter(listArr)})</h3>`);
+    h3.innerHTML = `Reservations (${reservationsCounter(listArr)})`;
   }).catch(() => {
     list.insertAdjacentHTML('beforebegin',
-      `<h3>Reservations</h3>
-        <p>There are no reservations yet</p>`);
+      `<p>There are no reservations yet</p>`);
   });
 
   return container;
@@ -74,7 +76,9 @@ const reserveMovie = ({
     date_start: start,
     date_end: end,
   };
-  postReservation(url, data);
+  postReservation(url, data).then(() => {
+    reservationNumbers(id);
+  });
 };
 
 const displayReservation = (movieData, id) => {
