@@ -129,7 +129,7 @@ img {
 // ------ Reservation styles --------------
 #overlay {
   display: none;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -143,7 +143,7 @@ img {
 }
 
 .reservation-container {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
@@ -171,6 +171,7 @@ img {
     position: absolute;
     right: 4rem;
     font-size: 3rem;
+    cursor: pointer;
   }
 
   h2 {
@@ -212,10 +213,15 @@ img {
 
     button {
       padding: 0.25rem 1rem;
-      border: none;
+      border: 1px solid $orange;
       border-radius: 0.25rem;
       background-color: $orange;
+      color: white;
       cursor: pointer;
+    }
+
+    button:hover {
+      background-color: transparent;
     }
   }
 }
