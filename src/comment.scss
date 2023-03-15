@@ -6,17 +6,19 @@ $main-font: 'Nunito', sans-serif;
 
 .comment-container {
   height: 100vh;
-  width: 80%;
-  background-color: #082032;
-  position: absolute;
-  top: 0;
-  left: 10%;
-  padding: 3rem 2rem;
-  display: flex;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  padding: 1rem 2rem 3rem 2rem;
+  display: none;
   flex-direction: column;
   align-items: center;
   row-gap: 5px;
   overflow: auto;
+  background-color: $bg-main;
+  margin: 1rem;
 }
 
 .comment-container img {
@@ -28,7 +30,7 @@ $main-font: 'Nunito', sans-serif;
 }
 
 .exit-btn {
-  position:absolute;
+  position: fixed;
   right: 0;
 }
 
@@ -37,7 +39,7 @@ $main-font: 'Nunito', sans-serif;
   flex-direction: column;
   justify-content: center;
   row-gap: 0.5rem;
-  width: 30%;
+  width: 40%;
 }
 
 .comment-form > input {
@@ -49,5 +51,9 @@ $main-font: 'Nunito', sans-serif;
 }
 
 .submit-comment {
-  padding: 0.6rem 0;
+  padding: 0.5rem 0;
+  background-color: $orange;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.2rem;
 }
