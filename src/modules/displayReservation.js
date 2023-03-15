@@ -3,16 +3,24 @@ import { getReservations, postReservation } from './reservationsData.js';
 import reservationsCounter from './reservationsCounter.js';
 
 const closePopup = () => {
+  const body = document.querySelector('body');
   const container = document.querySelector('.reservation-container');
+  const overlay = document.getElementById('overlay');
   container.classList.remove('active');
+  overlay.classList.remove('active');
+  body.classList.remove('popup');
   container.innerHTML = '';
 
   return container;
 };
 
 const reservationDetails = (data) => {
+  const body = document.querySelector('body');
   const container = document.querySelector('.reservation-container');
+  const overlay = document.getElementById('overlay');
   container.classList.add('active');
+  overlay.classList.add('active');
+  body.classList.add('popup');
 
   container.insertAdjacentHTML('beforeend',
     `<div class="img-container">
