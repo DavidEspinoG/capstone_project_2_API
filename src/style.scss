@@ -178,3 +178,30 @@ img {
 .reservation-container.active {
   display: flex;
 }
+
+// ---- Home page --------
+
+header {
+  .navigation {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  li {
+    list-style: none;
+  }
+  a {
+    font-size: 23px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.5s linear;
+    &:hover {
+      color: $orange;
+    }
+  }
+}
+
+footer {
+  text-align: center;
+  font-size: 20px;
+}
