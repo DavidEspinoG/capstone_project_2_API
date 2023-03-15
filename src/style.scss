@@ -103,6 +103,10 @@ img {
   padding: 7px;
   border-radius: 10px;
   font-size: 18px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .counters {
@@ -182,19 +186,35 @@ img {
 // ---- Home page --------
 
 header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+  padding-top: 10px;
+
+  .logo {
+    width: 170px;
+    background-color: white;
+    border-radius: 50%;
+    padding: 15px;
+  }
+
   .navigation {
     display: flex;
     justify-content: center;
     gap: 20px;
   }
+
   li {
     list-style: none;
   }
+
   a {
     font-size: 23px;
     color: white;
     text-decoration: none;
     transition: color 0.5s linear;
+
     &:hover {
       color: $orange;
     }
