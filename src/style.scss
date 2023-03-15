@@ -110,66 +110,67 @@ img {
   @include border-style();
 
   margin-top: 20px;
-  // ------ Reservation styles --------------
-  .reservation-container {
-    margin: 2rem;
-    padding: 2rem 14rem;
-    display: none;
-    flex-direction: column;
-    gap: 3rem;
-    background-color: $gray;
+}
+
+// ------ Reservation styles --------------
+.reservation-container {
+  margin: 2rem;
+  padding: 2rem 14rem;
+  display: none;
+  flex-direction: column;
+  gap: 3rem;
+  background-color: $gray;
+  border-radius: 1rem;
+
+  .img-container {
     border-radius: 1rem;
 
-    .img-container {
+    img {
+      width: 100%;
       border-radius: 1rem;
-
-      img {
-        width: 100%;
-        border-radius: 1rem;
-      }
     }
+  }
 
-    i {
-      position: absolute;
-      right: 4rem;
-      font-size: 3rem;
-    }
+  i {
+    position: absolute;
+    right: 4rem;
+    font-size: 3rem;
+  }
 
-    h2 {
-      font-size: 3rem;
-    }
+  h2 {
+    font-size: 3rem;
+  }
 
-    h2,
+  h2,
+  h3 {
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+
     h3 {
-      margin-bottom: 1rem;
-      text-align: center;
+      align-self: center;
     }
 
-    form {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1rem;
+    input {
+      width: 40%;
+      padding: 0.5rem;
+      color: $dark-green;
+      border: none;
+      border-radius: 0.25rem;
+    }
 
-      h3 {
-        align-self: center;
-      }
-
-      input {
-        width: 40%;
-        padding: 0.5rem;
-        color: $dark-green;
-        border: none;
-        border-radius: 0.25rem;
-      }
-
-      button {
-        padding: 0.25rem 1rem;
-        border: none;
-        border-radius: 0.25rem;
-        background-color: $orange;
-        cursor: pointer;
-      }
+    button {
+      padding: 0.25rem 1rem;
+      border: none;
+      border-radius: 0.25rem;
+      background-color: $orange;
+      cursor: pointer;
     }
   }
 }
