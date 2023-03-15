@@ -1,10 +1,8 @@
-
 import commentPopUp from './commentPopUp.js';
 import getLikes from './getLikes.js';
 import likeMovie from './likeMovie.js';
 import getMovie from './getMovie.js';
 import displayReservation from './displayReservation.js';
-
 
 const createMovieHtml = (obj) => {
   const container = document.createElement('div');
