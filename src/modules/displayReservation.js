@@ -60,7 +60,7 @@ const reservationNumbers = (id) => {
     h3.innerHTML = `Reservations (${reservationsCounter(listArr)})`;
   }).catch(() => {
     list.insertAdjacentHTML('beforebegin',
-      `<p>There are no reservations yet</p>`);
+      '<p>There are no reservations yet</p>');
   });
 
   return container;
