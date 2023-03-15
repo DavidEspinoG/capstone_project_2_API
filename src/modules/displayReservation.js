@@ -46,7 +46,7 @@ const reservationNumbers = (id) => {
         `<li>${reservation.date_start} - ${reservation.date_end} by ${reservation.username}</li>`);
     });
     const listArr = document.querySelectorAll('#reservations-list > li')
-    list.insertAdjacentHTML('beforebegin', `<h3>Reservations ${reservationsCounter(listArr)}</h3>`);
+    list.insertAdjacentHTML('beforebegin', `<h3>Reservations (${reservationsCounter(listArr)})</h3>`);
   }).catch(() => {
     list.insertAdjacentHTML('beforebegin',
       `<h3>Reservations</h3>
