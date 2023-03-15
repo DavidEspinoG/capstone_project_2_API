@@ -1,5 +1,6 @@
 import involvementUrl from './involvementUrl.js';
 import { getReservations, postReservation } from './reservationsData.js';
+import reservationsCounter from './reservationsCounter.js';
 
 const closePopup = () => {
   const container = document.querySelector('.reservation-container');
@@ -33,16 +34,23 @@ const reservationDetails = (data) => {
 const reservationNumbers = (id) => {
   const url = `${involvementUrl}/reservations?item_id=${id}`;
   const container = document.querySelector('.reservation-container');
-  container.insertAdjacentHTML('beforeend', '<section id="reservations-list"></section>');
+  container.insertAdjacentHTML('beforeend', 
+    `<section id="reservations-list-container">
+      <ul id="reservations-list"></ul>
+    </section>`);
 
   const list = document.getElementById('reservations-list');
-  list.innerHTML = '<h3>Reservations</h3>';
-
   getReservations(url).then((data) => {
     data.forEach((reservation) => {
       list.insertAdjacentHTML('beforeend',
-        `<p>${reservation.date_start} - ${reservation.date_end} by ${reservation.username}</p>`);
+        `<li>${reservation.date_start} - ${reservation.date_end} by ${reservation.username}</li>`);
     });
+    const listArr = document.querySelectorAll('#reservations-list > li')
+    list.insertAdjacentHTML('beforebegin', `<h3>Reservations ${reservationsCounter(listArr)}</h3>`);
+  }).catch(() => {
+    list.insertAdjacentHTML('beforebegin',
+      `<h3>Reservations</h3>
+        <p>There are no reservations yet</p>`);
   });
 
   return container;
