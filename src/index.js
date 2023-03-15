@@ -1,4 +1,5 @@
 import './style.scss';
+import './images/TrendingApp.png';
 import getTrending from './modules/getTrending.js';
 import createMovieHtml from './modules/createMovieHtml.js';
 import movieCounter from './modules/movieCounter.js';
