@@ -28,7 +28,7 @@
   "scripts": {
     "test": "jest --env=jsdom",
     "build": "webpack build --mode production",
-    "fix": "npx stylelint '**/*.{css,scss}' --fix && npx eslint . --fix && echo everything-fixed",
+    "fix": "npx stylelint \"**/*.{css,scss}\" --fix && npx eslint . --fix && echo everything-fixed",
     "start": "webpack serve --mode development"
   }
 }

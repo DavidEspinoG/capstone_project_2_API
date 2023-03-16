@@ -6,6 +6,8 @@ const closePopup = () => {
   const body = document.querySelector('body');
   const container = document.querySelector('.reservation-container');
   const overlay = document.getElementById('overlay');
+  const moviesContainer = document.querySelector('.movies-container');
+  moviesContainer.classList.remove('active');
   container.classList.remove('active');
   overlay.classList.remove('active');
   body.classList.remove('popup');
@@ -18,6 +20,8 @@ const reservationDetails = (data) => {
   const body = document.querySelector('body');
   const container = document.querySelector('.reservation-container');
   const overlay = document.getElementById('overlay');
+  const moviesContainer = document.querySelector('.movies-container');
+  moviesContainer.classList.add('active');
   container.classList.add('active');
   overlay.classList.add('active');
   body.classList.add('popup');
@@ -32,9 +36,9 @@ const reservationDetails = (data) => {
       <p>${data.overview}</p>
     </section>`);
 
-  const closeBtn = document.querySelector('.las.la-times');
+  const closeBtn = document.querySelectorAll('.las.la-times');
 
-  closeBtn.addEventListener('click', closePopup);
+  closeBtn.forEach((btn) => { btn.addEventListener('click', closePopup); });
 
   return container;
 };
@@ -59,7 +63,7 @@ const reservationNumbers = (id) => {
     const listArr = document.querySelectorAll('#reservations-list > li');
     h3.innerHTML = `Reservations (${reservationsCounter(listArr)})`;
   }).catch(() => {
-    list.insertAdjacentHTML('beforebegin',
+    list.insertAdjacentHTML('beforeend',
       '<p>There are no reservations yet</p>');
   });
 
