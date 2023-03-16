@@ -1,15 +1,12 @@
-import apiKey from '../apiKey.js';
-import '../comment.scss';
+import apiKey from './apiKey.js';
+import envolvAPI from './involvementUrl.js';
+import endPoint from './mainUrl.js';
 
 const commentWrapper = document.querySelector('.comment-container');
-const movieWrapper = document.querySelector('.movies-container');
-const endPoint = 'https://api.themoviedb.org/3/movie/';
 const showImage = 'http://image.tmdb.org/t/p/w500/';
-const appId = 'XXyTDvZv9uOyCyOJ39gw';
-const envolvAPI = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps';
 
 const movieData = async (movieId) => {
-  const response = await fetch(`${endPoint}/${movieId}?api_key=${apiKey}`);
+  const response = await fetch(`${endPoint}movie/${movieId}?api_key=${apiKey}`);
   const data = await response.json();
   return data;
 };
@@ -17,7 +14,7 @@ const movieData = async (movieId) => {
 const newComment = async (itemId, username, comment, callBack) => {
   let response;
   try {
-    response = await fetch(`${envolvAPI}/${appId}/comments`, {
+    response = await fetch(`${envolvAPI}/comments`, {
       method: 'POST',
       body: JSON.stringify({
         item_id: itemId,
@@ -28,26 +25,28 @@ const newComment = async (itemId, username, comment, callBack) => {
         'Content-type': 'application/json; charset=UTF-8',
       },
     });
-  } catch (error) {
-    console.log(error, response.status);
-  }
 
-  if (response.status === 201) {
-    callBack(itemId);
-    console.log('Post successful');
-  } else {
-    console.log('Post failed');
+    if (response.status === 201) {
+      callBack(itemId);
+    }
+
+    return response.status;
+  } catch (error) {
+    return { error, response: response.status };
   }
 };
 
 const getComment = async (movieId) => {
-  const response = await fetch(`${envolvAPI}/${appId}/comments?item_id=${movieId}`);
+  const response = await fetch(`${envolvAPI}/comments?item_id=${movieId}`);
   return response.json();
 };
 
 const commentPopUp = (movieId) => {
-  commentWrapper.style.display = 'flex';
-  movieWrapper.style.filter = 'blur(4px)';
+  const overlay = document.getElementById('overlay');
+  const moviesContainer = document.querySelector('.movies-container');
+  moviesContainer.classList.add('active');
+  overlay.classList.add('active');
+  commentWrapper.classList.add('active');
   movieData(movieId).then(
     (value) => {
       commentWrapper.innerHTML = '';
@@ -62,7 +61,7 @@ const commentPopUp = (movieId) => {
       const userName = document.createElement('input');
       const commentText = document.createElement('textarea');
       const submitBtn = document.createElement('button');
-      const exitBtn = document.createElement('button');
+      const exitBtn = document.createElement('i');
 
       const iamgeUrl = `${showImage}/${value.backdrop_path}`;
       popImg.setAttribute('src', iamgeUrl);
@@ -77,11 +76,7 @@ const commentPopUp = (movieId) => {
       commentText.required = true;
       submitBtn.className = 'submit-comment';
       submitBtn.innerText = 'Comment';
-      exitBtn.className = 'exit-btn';
-      exitBtn.innerText = 'X';
-      // delete this place holder
-      // const commentPlaceHolder = document.createElement('p');
-      // commentPlaceHolder.innerText = '03/15/2023 Alex: I\'d love to watch this movie';
+      exitBtn.className = 'las la-times';
 
       getComment(movieId).then(
         (value) => {
@@ -107,8 +102,9 @@ const commentPopUp = (movieId) => {
       });
 
       exitBtn.addEventListener('click', () => {
-        commentWrapper.style.display = 'none';
-        movieWrapper.style.filter = 'blur(0)';
+        commentWrapper.classList.remove('active');
+        moviesContainer.classList.remove('active');
+        overlay.classList.remove('active');
       });
     },
   );

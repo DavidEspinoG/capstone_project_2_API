@@ -2,7 +2,7 @@ $bg-main: #082032;
 $gray: #2c394b;
 $dark-green: #334756;
 $orange: #ff4c29;
-$overlay: rgba(255, 77, 41, 0.88);
+$overlay: rgba(255, 77, 41, 0.7);
 $main-font: 'Nunito', sans-serif;
 
 ::-webkit-scrollbar {
@@ -64,6 +64,60 @@ img {
   max-width: 100%;
 }
 
+// ---- Home page --------
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+  padding-top: 10px;
+
+  .logo {
+    width: 170px;
+    background-color: white;
+    border-radius: 25px;
+    padding: 15px;
+  }
+
+  .navigation {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+  }
+
+  a {
+    font-size: 23px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.5s linear;
+
+    &:hover {
+      color: $orange;
+    }
+  }
+}
+
+button {
+  padding: 0.25rem 1rem;
+  border: 1px solid $orange;
+  border-radius: 0.25rem;
+  background-color: $orange;
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+footer {
+  text-align: center;
+  font-size: 20px;
+}
+
+// ----- Movies Container ------
 .movies-container {
   @include grid(3);
   @include container();
@@ -105,13 +159,17 @@ img {
   }
 }
 
+.movies-container.active {
+  filter: blur(4px);
+}
+
 .movie-card {
   @include flex-center();
 }
 
 .button {
   background-color: $orange;
-  border: none;
+  border: 1px solid $orange;
   width: 230px;
   color: white;
   padding: 7px;
@@ -120,6 +178,7 @@ img {
 
   &:hover {
     cursor: pointer;
+    background-color: transparent;
   }
 }
 
@@ -130,7 +189,95 @@ img {
   margin-top: 20px;
 }
 
-// ------ Reservation styles --------------
+// --------- Comments Popup ----------------
+.comment-container {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  bottom: 0;
+  width: 70%;
+  margin: 2rem;
+  margin-left: -35%;
+  padding: 2rem 14rem;
+  display: none;
+  flex-direction: column;
+  background-color: $gray;
+  border-radius: 1rem;
+  z-index: 10;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+
+  img {
+    width: 100%;
+    border-radius: 1rem;
+  }
+
+  i {
+    position: absolute;
+    right: 4rem;
+    font-size: 3rem;
+    cursor: pointer;
+  }
+
+  h2 {
+    margin: 5rem 0 0;
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  h3 {
+    margin-top: 4rem;
+    text-align: center;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  ul > li {
+    margin-top: 0.75rem;
+    list-style: none;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+
+    input,
+    textarea {
+      width: 40%;
+      padding: 0.5rem;
+      color: $dark-green;
+      border: none;
+      border-radius: 0.25rem;
+    }
+
+    textarea {
+      height: 8rem;
+      resize: none;
+    }
+  }
+}
+
+.comment-container::-webkit-scrollbar {
+  width: 1rem;
+}
+
+.comment-container::-webkit-scrollbar-thumb {
+  background: $dark-green;
+  border-radius: 1rem;
+  border-top-right-radius: 8rem;
+  border-bottom-right-radius: 8rem;
+}
+
+.comment-container.active {
+  display: flex;
+}
+
+// ------ Reservations Popup --------------
 #overlay {
   display: none;
   position: fixed;
@@ -140,6 +287,7 @@ img {
   bottom: 0;
   background-color: $overlay;
   overflow-y: hidden;
+  z-index: 5;
 }
 
 #overlay.active {
@@ -149,9 +297,11 @@ img {
 .reservation-container {
   position: fixed;
   top: 0;
-  left: 0;
+  left: 50%;
   bottom: 0;
+  width: 70%;
   margin: 2rem;
+  margin-left: -35%;
   padding: 2rem 14rem;
   display: none;
   flex-direction: column;
@@ -214,19 +364,6 @@ img {
       border: none;
       border-radius: 0.25rem;
     }
-
-    button {
-      padding: 0.25rem 1rem;
-      border: 1px solid $orange;
-      border-radius: 0.25rem;
-      background-color: $orange;
-      color: white;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: transparent;
-    }
   }
 }
 
@@ -243,44 +380,4 @@ img {
 
 .reservation-container.active {
   display: flex;
-}
-
-// ---- Home page --------
-
-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 10px;
-  padding-top: 10px;
-
-  .logo {
-    width: 170px;
-    background-color: white;
-    border-radius: 25px;
-    padding: 15px;
-  }
-
-  .navigation {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    list-style: none;
-  }
-
-  a {
-    font-size: 23px;
-    color: white;
-    text-decoration: none;
-    transition: color 0.5s linear;
-
-    &:hover {
-      color: $orange;
-    }
-  }
-}
-
-footer {
-  text-align: center;
-  font-size: 20px;
 }

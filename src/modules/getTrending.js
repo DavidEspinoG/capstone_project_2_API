@@ -1,4 +1,4 @@
-import apiKey from '../apiKey.js';
+import apiKey from './apiKey.js';
 import mainUrl from './mainUrl.js';
 
 const getTrending = async () => {

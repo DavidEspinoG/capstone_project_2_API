@@ -1,4 +1,4 @@
-import involvementUrl from './involvmentUrl.js';
+import involvementUrl from './involvementUrl.js';
 
 const likeMovie = async (id) => {
   const config = {
