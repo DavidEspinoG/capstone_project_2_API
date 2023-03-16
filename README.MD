@@ -2,48 +2,56 @@
 
 # 📗 Table of Contents
 
-- [📖 About the Project](#about-project)
-  - [🛠 Built With](#built-with)
-    - [Tech Stack](#tech-stack)
-    - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
-- [💻 Getting Started](#getting-started)
-  - [Setup](#setup)
-  - [Prerequisites](#prerequisites)
-  - [Install](#install)
-  - [Usage](#usage)
-  - [Run tests](#run-tests)
-  - [Deployment](#triangular_flag_on_post-deployment)
-- [👥 Authors](#authors)
-- [🔭 Future Features](#future-features)
-- [🤝 Contributing](#contributing)
-- [⭐️ Show your support](#support)
-- [🙏 Acknowledgements](#acknowledgements)
-- [📝 License](#license)
+- [📗 Table of Contents](#-table-of-contents)
+- [📖 capstone\_project\_2\_API ](#-capstone_project_2_api-)
+  - [🛠 Built With ](#-built-with-)
+    - [Tech Stack ](#tech-stack-)
+    - [Key Features ](#key-features-)
+  - [🚀 Live Demo ](#-live-demo-)
+  - [💻 Getting Started ](#-getting-started-)
+    - [Prerequisites](#prerequisites)
+    - [Setup](#setup)
+    - [Install](#install)
+    - [Usage](#usage)
+    - [Run tests](#run-tests)
+    - [Deployment](#deployment)
+  - [👥 Authors ](#-authors-)
+  - [🔭 Future Features ](#-future-features-)
+  - [🤝 Contributing ](#-contributing-)
+  - [⭐️ Show your support ](#️-show-your-support-)
+  - [🙏 Acknowledgments ](#-acknowledgments-)
+  - [📝 License ](#-license-)
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 Portfolio <a id="about-project"></a>
+# 📖 capstone_project_2_API <a id="about-project"></a>
 
-> Project created for showing my expirience as a software developer
+> This is a project done as a requirment to complete microverse module 2. It emulates a movie's trending app
+where we display the 20 most popular movies of the day. It allows users to interact with the app by liking, commenting, and reserving a digital copy of each specific movie.
 
 ## 🛠 Built With <a id="built-with"></a>
 
 ### Tech Stack <a id="tech-stack"></a>
 
-> HTML & CSS
+> HTML & SCSS
+> Javascript
+> Webpack
+> Moviedb API
+> Involvement API
+> Jest
 
 <details>
   <summary>Client</summary>
   <ul>
-    <li><a href="#">HTML & CSS</a></li>
+    <li><a href="#">HTML & SCSS</a></li>
   </ul>
 </details>
 
 <details>
   <summary>Server</summary>
   <ul>
-    <li><a href="#">N/A</a></li>
+    <li><a href="#">moviedb</a></li>
+    <li><a href="#">involvement API</a></li>
   </ul>
 </details>
 
@@ -58,8 +66,9 @@
 
 ### Key Features <a id="key-features"></a>
 
-- Show's the best of my work as a software developer
-- Responsive web
+- Displaying of the most popular movies
+- Interactivity by liking, commenting, and reserving movies
+- Counting total movies, likes, comments, and reservations
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -67,10 +76,8 @@
 
 ## 🚀 Live Demo <a id="live-demo"></a>
 
-> Add a link to your deployed project.
 
-
-- [Live Demo Link](https://davidespinog.github.io/portfolio/)
+- [Live Demo Link](https://davidespinog.github.io/capstone_project_2_API/)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -86,20 +93,20 @@ To get a local copy up and running, follow these steps.
 
 In order to run this project you need:
 
-> git clone https://github.com/DavidEspinoG/portfolio.git
+> git clone https://github.com/DavidEspinoG/capstone_project_2_API.git
 > (you can open it via live server in VS)
 
 ### Setup
 
 Clone this repository to your desired folder:
 
-> git clone https://github.com/DavidEspinoG/portfolio.git
+> git clone https://github.com/DavidEspinoG/capstone_project_2_API.git
 
 ### Install
 
 Install this project with:
 
-N/A
+npm install
 
 ### Usage
 
@@ -110,12 +117,13 @@ To run the project just open it in VS and run liveServer
 
 To run tests, run the following command:
 
-N/A
+npm run test
+
 ### Deployment
 
 You can deploy this project using:
 
-N/A
+use chosen hosting service or github pages
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -130,6 +138,17 @@ N/A
 - Twitter: [@DavidEspinoG](https://twitter.com/DavidEspinoG)
 - LinkedIn: [davidespinog](https://linkedin.com/in/davidespinog)
 
+👤 **Getayawkal Tamrat**
+
+- GitHub: [@githubhandle](https://github.com/getssh)
+- Twitter: [@twitterhandle](https://twitter.com/GetayawkalT)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/getayawkal-tamrat/)
+
+ 👤 **Mathias Wismann**
+
+- GitHub: [@mwismann](https://github.com/mwismann)
+- Twitter: [@mathias_wismann](https://twitter.com/mathias_wismann)
+- LinkedIn: [Mathias Wismann](https://www.linkedin.com/in/mathias-wismann/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -138,8 +157,8 @@ N/A
 ## 🔭 Future Features <a id="future-features"></a>
 
 
-- More projects are going to be added **[new_feature_1]**
-- A contact form
+- More projects are going to be added **[Most trending series]**
+- More projects are going to be added **[Most trending people]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -149,15 +168,13 @@ N/A
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page](https://github.com/DavidEspinoG/capstone_project_2_API/issues/).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- SUPPORT -->
 
 ## ⭐️ Show your support <a id="support"></a>
-
-> Write a message to encourage readers to support your project
 
 If you like this project please star this repo.
 
@@ -166,8 +183,6 @@ If you like this project please star this repo.
 <!-- ACKNOWLEDGEMENTS -->
 
 ## 🙏 Acknowledgments <a id="acknowledgements"></a>
-
-> Give credit to everyone who inspired your codebase.
 
 I would like to thank microverse inc. for helping me in my professional carreer. 
 
