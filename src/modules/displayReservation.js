@@ -28,12 +28,12 @@ const reservationDetails = (data) => {
 
   container.insertAdjacentHTML('beforeend',
     `<div class="img-container">
-      <img src="https://image.tmdb.org/t/p/original/${data.backdrop_path}" alt="">
+      <img src="https://image.tmdb.org/t/p/original/${'backdrop_path' in data ? data.backdrop_path : data.profile_path}" alt="">
     </div>
     <i class="las la-times"></i>
     <section id="reservation-movie-meta">
-      <h2>${data.title}</h2>
-      <p>${data.overview}</p>
+      <h2>${'title' in data ? data.title : data.name}</h2>
+      <p>${'overview' in data ? data.overview : data.biography}</p>
     </section>`);
 
   const closeBtn = document.querySelectorAll('.las.la-times');

@@ -1,12 +1,12 @@
 import apiKey from './apiKey.js';
 import envolvAPI from './involvementUrl.js';
-import endPoint from './mainUrl.js';
+import mainUrl from './mainUrl.js';
 
 const commentWrapper = document.querySelector('.comment-container');
 const showImage = 'http://image.tmdb.org/t/p/w500/';
 
-const movieData = async (movieId) => {
-  const response = await fetch(`${endPoint}movie/${movieId}?api_key=${apiKey}`);
+const movieData = async (endpoint, movieId) => {
+  const response = await fetch(`${mainUrl}${endpoint}/${movieId}?api_key=${apiKey}`);
   const data = await response.json();
   return data;
 };
@@ -41,13 +41,13 @@ const getComment = async (movieId) => {
   return response.json();
 };
 
-const commentPopUp = (movieId) => {
+const commentPopUp = (endpoint, movieId) => {
   const overlay = document.getElementById('overlay');
   const moviesContainer = document.querySelector('.movies-container');
   moviesContainer.classList.add('active');
   overlay.classList.add('active');
   commentWrapper.classList.add('active');
-  movieData(movieId).then(
+  movieData(endpoint, movieId).then(
     (value) => {
       commentWrapper.innerHTML = '';
       const popImg = document.createElement('img');
@@ -65,7 +65,7 @@ const commentPopUp = (movieId) => {
 
       const iamgeUrl = `${showImage}/${value.backdrop_path}`;
       popImg.setAttribute('src', iamgeUrl);
-      popTitle.innerText = value.original_title;
+      popTitle.innerText = 'title' in value ? value.title : value.name;
       popOverview.innerText = value.overview;
       commentTitle.innerText = 'Add a comment';
       commnetForm.className = 'comment-form';

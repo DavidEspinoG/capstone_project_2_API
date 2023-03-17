@@ -4,7 +4,7 @@ import likeMovie from './likeMovie.js';
 import getMovie from './getMovie.js';
 import displayReservation from './displayReservation.js';
 
-const createMovieHtml = (obj) => {
+const createMovieHtml = (endpoint, obj) => {
   const container = document.createElement('div');
   const img = document.createElement('img');
   const title = document.createElement('p');
@@ -19,7 +19,7 @@ const createMovieHtml = (obj) => {
   getLikes(obj.id)
     .then((data) => { likes.innerText = data; });
   container.classList.add('movie-card');
-  title.innerText = obj.title;
+  title.innerText = endpoint === 'movie' ? obj.title : obj.name;
   commentButton.innerText = 'Comment';
   commentButton.classList.add('button');
   commentButton.classList.add('comment-button');
@@ -29,14 +29,14 @@ const createMovieHtml = (obj) => {
   reserveButton.dataset.id = obj.id;
 
   reserveButton.addEventListener('click', () => {
-    getMovie(obj.id).then((data) => displayReservation(data, obj.id));
+    getMovie(endpoint, obj.id).then((data) => displayReservation(data, obj.id));
   });
 
   likeButton.classList.add('lar');
   likeButton.classList.add('la-heart');
   likeButton.classList.add('like-button');
 
-  commentButton.addEventListener('click', () => commentPopUp(obj.id));
+  commentButton.addEventListener('click', () => commentPopUp(endpoint, obj.id));
 
   likeButton.addEventListener('click', () => {
     likeMovie(obj.id)
@@ -47,7 +47,7 @@ const createMovieHtml = (obj) => {
           });
       });
   });
-  img.src = `https://image.tmdb.org/t/p/w500/${obj.poster_path}`;
+  img.src = `https://image.tmdb.org/t/p/w500/${endpoint === 'person' ? obj.profile_path : obj.poster_path}`;
   likesDiv.append(likeButton, likes);
   container.append(img, title, likesDiv, commentButton, reserveButton);
   return container;

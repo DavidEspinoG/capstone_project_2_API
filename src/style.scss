@@ -68,22 +68,21 @@ img {
 
 header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding-bottom: 10px;
-  padding-top: 10px;
+  padding: 1rem 8rem;
 
   .logo {
     width: 170px;
+    padding: 0.25rem 1rem;
     background-color: white;
-    border-radius: 25px;
-    padding: 15px;
+    border-radius: 1rem;
   }
 
   .navigation {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 4rem;
     list-style: none;
   }
 
