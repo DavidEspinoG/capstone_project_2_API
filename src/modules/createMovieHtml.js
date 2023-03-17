@@ -27,17 +27,13 @@ const createMovieHtml = (endpoint, obj) => {
   reserveButton.innerText = 'Reserve';
   reserveButton.classList.add('button');
   reserveButton.dataset.id = obj.id;
-
   reserveButton.addEventListener('click', () => {
     getMovie(endpoint, obj.id).then((data) => displayReservation(data, obj.id));
   });
-
   likeButton.classList.add('lar');
   likeButton.classList.add('la-heart');
   likeButton.classList.add('like-button');
-
   commentButton.addEventListener('click', () => commentPopUp(endpoint, obj.id));
-
   likeButton.addEventListener('click', () => {
     likeMovie(obj.id)
       .then(() => {
@@ -46,10 +42,17 @@ const createMovieHtml = (endpoint, obj) => {
             likes.innerText = data;
           });
       });
-  });
+  º });
   img.src = `https://image.tmdb.org/t/p/w500/${endpoint === 'person' ? obj.profile_path : obj.poster_path}`;
   likesDiv.append(likeButton, likes);
-  container.append(img, title, likesDiv, commentButton, reserveButton);
+  if (endpoint != 'person'){
+    container.append(img, title, likesDiv, commentButton, reserveButton);
+  } else {
+    img.addEventListener('click', () => {
+      getMovie(endpoint, obj.id).then((data) => displayReservation(data, obj.id, true));
+    })
+    container.append(img, title, likesDiv);
+  }
   return container;
 };
 
