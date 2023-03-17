@@ -42,15 +42,15 @@ const createMovieHtml = (endpoint, obj) => {
             likes.innerText = data;
           });
       });
-  º });
+  });
   img.src = `https://image.tmdb.org/t/p/w500/${endpoint === 'person' ? obj.profile_path : obj.poster_path}`;
   likesDiv.append(likeButton, likes);
-  if (endpoint != 'person'){
+  if (endpoint !== 'person') {
     container.append(img, title, likesDiv, commentButton, reserveButton);
   } else {
     img.addEventListener('click', () => {
       getMovie(endpoint, obj.id).then((data) => displayReservation(data, obj.id, true));
-    })
+    });
     container.append(img, title, likesDiv);
   }
   return container;

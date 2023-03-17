@@ -89,10 +89,10 @@ const displayReservation = (movieData, id, person = false) => {
   const container = document.querySelector('.reservation-container');
   container.innerHTML = '';
   reservationDetails(movieData);
-  if(!person) {
+  if (!person) {
     reservationNumbers(id);
     container.insertAdjacentHTML('beforeend',
-    `<form action="/" data-id="${id}">
+      `<form action="/" data-id="${id}">
     <h3>Add a Reservation</h3>
     <input type="text" name="user-name" id="user-name" placeholder="Your name" required>
     <input type="date" name="res-start" id="res-start" placeholder="Start date" required>
@@ -100,7 +100,6 @@ const displayReservation = (movieData, id, person = false) => {
     <button type="submit">Reserve</button>
     </form>`);
   }
-  
 
   const form = document.querySelector('form');
   form.addEventListener('submit', (e) => {
