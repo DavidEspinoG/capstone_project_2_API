@@ -11,7 +11,7 @@ const movieData = async (endpoint, movieId) => {
   return data;
 };
 
-const newComment = async (itemId, username, comment, callBack) => {
+const newComment = async (itemId, endpoint, username, comment, callBack) => {
   let response;
   try {
     response = await fetch(`${envolvAPI}/comments`, {
@@ -27,7 +27,7 @@ const newComment = async (itemId, username, comment, callBack) => {
     });
 
     if (response.status === 201) {
-      callBack(itemId);
+      callBack(endpoint, itemId);
     }
 
     return response.status;
@@ -96,7 +96,7 @@ const commentPopUp = (endpoint, movieId) => {
 
       commnetForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        newComment(movieId, userName.value, commentText.value, commentPopUp);
+        newComment(movieId, endpoint, userName.value, commentText.value, commentPopUp);
         userName.value = '';
         commentText.value = '';
       });
