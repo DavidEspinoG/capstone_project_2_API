@@ -63,10 +63,10 @@ const commentPopUp = (endpoint, movieId) => {
       const submitBtn = document.createElement('button');
       const exitBtn = document.createElement('i');
 
-      const iamgeUrl = `${showImage}/${value.backdrop_path}`;
+      const iamgeUrl = `${showImage}/${'backdrop_path' in value ? value.backdrop_path : value.profile_path}`;
       popImg.setAttribute('src', iamgeUrl);
       popTitle.innerText = 'title' in value ? value.title : value.name;
-      popOverview.innerText = value.overview;
+      popOverview.innerText = `${'overview' in value ? value.overview : value.biography}`;
       commentTitle.innerText = 'Add a comment';
       commnetForm.className = 'comment-form';
       userName.setAttribute('placeholder', 'Your Name');
